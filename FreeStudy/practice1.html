@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title="練習用">
+</head>
+<body>
+  <h1>Seating Arrangements<h1>
+
+  <form name="Sample1_form">
+  <input type="text" name="textbox">
+  <input type="button" value="Sample1" onclick="Sample1()">
+  <br>
+  <input type="button" value="シャッフル" onclick="shuffle(array)">
+  <br><br>
+  <input type="button" value="表示" onclick="Sample3()">
+
+  <div id="nameList"></div>
+
+  <script type="text/javascript">
+  var array = [];
+
+  function Sample1(){
+      var hoge = Sample1_form.textbox.value;  //テキストエリアの値を取得
+       array.push(hoge);
+      alert(""+ hoge +"が追加されました。");
+      //document.write (array[0]);
+  }
+  function shuffle(array) {
+  var n = array.length, t, i;
+
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+    t = array[n];
+    array[n] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+  function Sample3(){
+    //var r = Math.floor(Math.random() * array.length);aa
+    for(var i = 0; i < array.length; i++){
+      document.getElementById("nameList").innerHTML += "" + (i + 1) + ". " + array[i] + "<br>";
+    }
+
+  }
+  </script>
+</body>
+</html>
