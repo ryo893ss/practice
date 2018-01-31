@@ -2,28 +2,50 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title="練習用">
+  <title="mykw研席決め">
+  <style type ="text/css">
+    body{
+      background:#FFCCCC;
+      text-align:center;
+      margin-left:auto;margin-right:auto;
+
+    }
+    .nameList{
+      text-align: left;
+
+    }
+  </style>
 </head>
 <body>
   <h1>Seating Arrangements<h1>
+  <h3>
+    名前を入力してください
+  </h3>
 
   <form name="Sample1_form">
-  <input type="text" name="textbox">
-  <input type="button" value="Sample1" onclick="Sample1()">
-  <br>
-  <input type="button" value="シャッフル" onclick="shuffle(array)">
+  <input type="text" name="textbox" id = "textbox">
+  <input type="button" value="名前の追加" onclick="Sample1()">
   <br><br>
-  <input type="button" value="表示" onclick="Sample3()">
+  <input type="button" value="シャッフル" onclick="shuffle(array)" style="WIDTH:252px">
+  <br><br>
+  <input type="button" value="表示" onclick="Sample3()" style="WIDTH:252px">
+  <br><br>
+  <input type="button" value="削除" onclick="Sample4()" style="WIDTH:252px">
+  <br><br>
 
   <div id="nameList"></div>
 
   <script type="text/javascript">
   var array = [];
+  var count = 0;
 
   function Sample1(){
       var hoge = Sample1_form.textbox.value;  //テキストエリアの値を取得
        array.push(hoge);
-      alert(""+ hoge +"が追加されました。");
+      //alert(""+ hoge +"が追加されました。");
+      count += 1;
+      document.getElementById("nameList").innerHTML += "" + count + ". " + hoge + "<br>";
+      document.getElementById("textbox").value="";
       //document.write (array[0]);
   }
   function shuffle(array) {
@@ -39,11 +61,15 @@
   return array;
 }
   function Sample3(){
-    //var r = Math.floor(Math.random() * array.length);aa
+    document.getElementById("nameList").innerHTML = "";
     for(var i = 0; i < array.length; i++){
       document.getElementById("nameList").innerHTML += "" + (i + 1) + ". " + array[i] + "<br>";
     }
 
+  }
+  function Sample4(){
+    array =[];
+    alert("削除されました。");
   }
   </script>
 </body>
